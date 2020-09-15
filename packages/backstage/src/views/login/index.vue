@@ -7,48 +7,29 @@
           <p>学拼乐</p>
         </div>
         <div :class="$style.loginForm">
-          <el-tabs v-model="loginModeSwitch">
-            <el-tab-pane label="账号密码登录" name="usernamePassword"></el-tab-pane>
-            <el-tab-pane label="手机号码登录" name="phoneVercode"></el-tab-pane>
-          </el-tabs>
           <el-form ref="loginForm" :model="loginForm" :rules="loginFormRules">
-            <div v-if="loginModeSwitch === 'usernamePassword'">
-              <el-form-item prop="userName">
-                <el-input v-model="loginForm.username" placeholder="用户名：admin">
-                  <i slot="prefix" class="el-input__icon el-icon-user" />
-                </el-input>
-              </el-form-item>
-              <el-form-item prop="userPassword">
-                <el-input
-                  v-model="loginForm.password"
-                  type="password"
-                  placeholder="密码：lazy.admin"
-                >
-                  <i slot="prefix" class="el-input__icon el-icon-lock" />
-                </el-input>
-              </el-form-item>
-            </div>
-            <div v-if="loginModeSwitch === 'phoneVercode'">
-              <el-form-item prop="phoneNum">
-                <el-input v-model="loginForm.phoneNum" placeholder="手机号码：phone">
-                  <i slot="prefix" class="el-input__icon el-icon-mobile-phone" />
-                </el-input>
-              </el-form-item>
-              <el-form-item prop="vercode">
-                <el-input
-                  style="width:70%;float:left;"
-                  v-model="loginForm.vercode"
-                  type="password"
-                  placeholder="验证码：vercode"
-                >
-                  <i slot="prefix" class="el-input__icon el-icon-chat-dot-square" />
-                </el-input>
-                <div :class="$style.countDown" type="primary">
-                  <u v-if="isGetCode">获取验证码</u>
-                  <span v-else>60s</span>
-                </div>
-              </el-form-item>
-            </div>
+            <el-form-item prop="userName">
+              <el-input v-model="loginForm.username" placeholder="用户名：admin">
+                <i slot="prefix" class="el-input__icon el-icon-user" />
+              </el-input>
+            </el-form-item>
+            <el-form-item prop="userPassword">
+              <el-input
+                v-model="loginForm.password"
+                type="password"
+                placeholder="密码：lazy.admin"
+              >
+                <i slot="prefix" class="el-input__icon el-icon-lock" />
+              </el-input>
+            </el-form-item>
+            <el-form-item>
+              <div class="flex-pack-justify flex-align-center">
+                <el-checkbox v-model="isAutoLogin">自动登录 </el-checkbox>
+                <el-button type="text" class="floatR" @click="$router.go(0)">
+                  忘记密码？
+                </el-button>
+              </div>
+            </el-form-item>
             <el-form-item>
               <el-button  type="primary"
                           :class="$style.loginBtn"
@@ -65,26 +46,30 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { login } from './api'
-import loginFormRuleFun from './rules'
 
 @Component({
   name: 'Login',
 })
 export default class Login extends Vue {
-  private loginModeSwitch = 'phoneVercode'; // usernamePassword、phoneVercode
-
-  private isGetCode = true; // 在获取手机验证码
-
-  private loginForm: object = {
+  loginForm: object = {
     username: 'admin',
     password: 'lazy.admin',
   };
 
-  private loginFormRules = loginFormRuleFun(
-    this.loginModeSwitch === 'usernamePassword'
-  );
+  loginFormRules: object = {
+    username: [ { required: true, message: '请输入用户名', trigger: 'blur' } ],
+    password: [
+      { required: true, message: '请输入登录密码', trigger: 'blur' },
+      {
+        min: 6,
+        max: 12,
+        message: '长度在6到12个字符',
+        trigger: 'blur',
+      },
+    ],
+  };
 
-  savePassword: boolean = false;
+  isAutoLogin: boolean = false;
 
   btnLoading: boolean = false;
 
@@ -104,6 +89,7 @@ export default class Login extends Vue {
     this.btnLoading = true
     try {
       const res = await login(this.loginForm)
+      console.log(res, 123)
       if (res.code === 200) {
         // 登录成功将信息存储在vuex中
         this.$store.dispatch('user/saveToken', res.data)
@@ -160,23 +146,13 @@ export default class Login extends Vue {
   }
 }
 .loginForm {
-  margin-top: 20px;
+  margin-top: 40px;
   .el-form-item { // 看看这个是否生效的
     margin-bottom: 24px;
-  }
-  .el-tabs__nav-wrap::after{
-    display: none;
   }
 }
 .loginBtn {
   display: block;
   width: 100%;
-}
-.countDown {
-  width: 20%;
-  height: 40px;
-  float: right;
-  text-align: center;
-  line-height: 40px;
 }
 </style>
