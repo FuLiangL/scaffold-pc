@@ -1,0 +1,40 @@
+.el-menu.el-menu-dark-theme {
+  li {
+    &:hover {
+      i,span {
+        color: #fff;
+      }
+    }
+    .el-menu {
+      background: #000c17;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,.45);
+      .el-menu-item{
+        i, span {
+          color: hsla(0,0%,100%,.65);
+        }
+        &:hover {
+          background: transparent;
+          i, span {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  .el-submenu__title:hover {
+    background: transparent !important;
+    .el-icon-arrow-down{
+      color: #fff;
+    }
+  }
+}
+
+.el-menu.el-menu-light-theme {
+  .el-submenu__title {
+    &:hover {
+      i, span {
+        color: $--color-primary;
+      }
+    }
+  }
+}

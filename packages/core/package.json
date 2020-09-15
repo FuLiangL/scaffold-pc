@@ -1,0 +1,16 @@
+{
+  "name": "core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hybrid, H5",
+  "scripts": {},
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "vue-property-decorator": "^8.4.2"
+  },
+  "devDependencies": {
+    "lint-staged": "^10.3.0",
+    "typescript": "~3.9.3"
+  }
+}

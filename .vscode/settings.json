@@ -1,0 +1,15 @@
+{
+  "eslint.enable": true,
+  "editor.tabSize": 2,
+  "git.autofetch": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.printWidth": 120,
+  "prettier.bracketSpacing": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": [
+    {
+      "pattern": "packages/*"
+    }
+  ]
+}
