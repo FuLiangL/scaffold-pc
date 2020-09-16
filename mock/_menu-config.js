@@ -55,10 +55,10 @@ const slideMenu = [
         path: '/eCommerceBackstage/test2', icon: 'el-icon-notebook-1', title: '电商后台5', children: [],
       },
       {
-        path: '/eCommerceBackstage/demo', icon: 'el-icon-chat-line-round', title: '电商后台6', children: [],
+        path: '/eCommerceBackstage/test4', icon: 'el-icon-chat-line-round', title: '电商后台6', children: [],
       },
       {
-        path: '/eCommerceBackstage/demo1', icon: 'el-icon-setting', title: '电商后台7', children: [],
+        path: '/eCommerceBackstage/test5', icon: 'el-icon-setting', title: '电商后台8', children: [],
       },
     ],
   },

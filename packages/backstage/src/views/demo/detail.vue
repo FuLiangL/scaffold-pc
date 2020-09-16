@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import detailFormat from 'core/components/detail-format/index.vue'
+import detailFormat from 'core/src/components/detail-format/index.vue'
 
 @Component({
   name: 'DemoDetail',

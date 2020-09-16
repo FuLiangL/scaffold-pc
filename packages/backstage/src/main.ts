@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Element from 'element-ui'
 import 'element-ui/packages/theme-chalk/src/index.scss'
 import BaiduMap from 'vue-baidu-map'
-import 'core/style/index.scss'
+import 'core/src/style/index.scss'
 
 import commonLayout from './views/layout/common.vue'
 import popLayout from './views/layout/pop.vue'

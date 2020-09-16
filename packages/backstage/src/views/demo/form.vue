@@ -15,7 +15,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import formFormat from 'core/components/form-format/index.vue'
+import formFormat from 'core/src/components/form-format/index.vue'
 
 @Component({
   name: 'DemoForm',

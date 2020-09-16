@@ -35,7 +35,7 @@
 </template>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import tableFilter from 'core/components/table-filter/index.vue'
+import tableFilter from 'core/src/components/table-filter/index.vue'
 
 @Component({
   name: 'demoTable',
