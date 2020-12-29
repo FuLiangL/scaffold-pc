@@ -5,8 +5,8 @@
       <div :class="isCollapse ?
                    [$style.closeLogo, $style['page-logo']] :
                    [$style.openLogo, $style['page-logo']]">
-        <h1 v-if="isCollapse">拼</h1>
-        <h1 v-else>可拼乐</h1>
+        <h1 v-if="isCollapse">金</h1>
+        <h1 v-else>金地物业</h1>
       </div>
       <div :class="$style['navbar-left']">
         <div :class="$style['navbar-collapse']">
