@@ -43,7 +43,9 @@ export default class Detail extends Vue {
     },
     {
       label: '图片',
-      value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599048000308&di=17d4f373d59ace94e00fd8e5fda22bab&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg',
+      value: `https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=
+      1599048000308&di=17d4f373d59ace94e00fd8e5fda22bab&imgtype=0&src=
+      http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg`,
       slot: 'img',
       bottomLine: true,
       span: 18,
@@ -63,7 +65,9 @@ export default class Detail extends Vue {
     },
     {
       label: '图片',
-      value: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1599048000308&di=17d4f373d59ace94e00fd8e5fda22bab&imgtype=0&src=http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg',
+      value: `https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=
+      1599048000308&di=17d4f373d59ace94e00fd8e5fda22bab&imgtype=0&src=
+      http%3A%2F%2Fa4.att.hudong.com%2F52%2F52%2F01200000169026136208529565374.jpg`,
       slot: 'checkbox',
       span: 24,
     },

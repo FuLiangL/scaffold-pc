@@ -108,7 +108,7 @@ export default class BasicForm extends Vue {
   };
 
   @Watch('timeData')
-  protected onTimeChange (value: any) {
+  protected onTimeChange(value: any) {
     if (value.length) {
       const startTime = value[0]
       const endTime = value[1]
@@ -117,7 +117,7 @@ export default class BasicForm extends Vue {
     }
   }
 
-  protected onSubmit () {
+  protected onSubmit() {
     (this.$refs.basicForm as Vue & { validate: Function }).validate((valid: any): void => {
       if (valid) {
         this.$message.success('提交成功')
@@ -127,7 +127,7 @@ export default class BasicForm extends Vue {
     })
   }
 
-  protected pickChange (value: any): void {
+  protected pickChange(value: any): void {
     if (value === null) {
       this.basicForm.startTime = ''
       this.basicForm.endTime = ''

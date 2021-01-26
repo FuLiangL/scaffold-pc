@@ -50,14 +50,14 @@ export default class mapBaidu extends Vue {
   public zoom:number = 15
 
   // ready申请的函数
-  private handler ({ BMap, map }: any) {
+  private handler({ BMap, map }: any) {
     this.BMap = BMap
     this.map = map
     this.init()
   }
 
   // 初始化函数
-  private init () {
+  private init() {
     const point = new this.BMap.Point(this.center.lng, this.center.lat)
     this.map.centerAndZoom(point, this.zoom)
     this.oneDymamicArea()
@@ -79,7 +79,7 @@ export default class mapBaidu extends Vue {
     })
   }
 
-  private oneDymamicArea () {
+  private oneDymamicArea() {
     // 默认有传值的状态，需要进行中心点
     this.center = { lng: 0, lat: 0 }
     this.secRingArr.forEach((item: { lng: number, lat: number }) => {
@@ -107,7 +107,7 @@ export default class mapBaidu extends Vue {
     this.map.addOverlay(this.polygon[0])
   }
 
-  private initDymamicArea (
+  private initDymamicArea(
     obj: { lat: number, lng: number, index: number, map: any, },
   ) {
     let { lat } = obj
@@ -139,13 +139,13 @@ export default class mapBaidu extends Vue {
   }
 
   // 地图进行点击
-  getClickInfo (e: any) {
+  getClickInfo(e: any) {
     this.getPath()
     console.log(`${e}正常单击可以进行路径的选择`)
   }
 
   // 获取得到对应的坐标的位置
-  public getPath () {
+  public getPath() {
     const res = this.polygon[0] && this.polygon[0].getPath()
     return res
   }

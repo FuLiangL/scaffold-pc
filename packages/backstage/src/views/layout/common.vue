@@ -34,7 +34,7 @@ export default class common extends Vue {
 
   private asideWidth: string = '240px'
 
-  public toogleCollapse () {
+  public toogleCollapse() {
     this.isCollapse = !this.isCollapse
     this.asideWidth = this.isCollapse ? '65px' : '240px'
   }

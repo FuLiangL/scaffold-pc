@@ -1,24 +1,22 @@
 <template>
-<el-menu :default-active="defaultActive"
-         :class="activeThemeClass"
-         class="head-menu"
-         mode="horizontal">
-         <!-- @select="handleSelect"> -->
-  <!-- 只进行一级展示 -->
-  <template v-for="item in slideMenu">
-    <el-menu-item disabled v-if="item.isBlank" :index="item.path" :key="item.path">
-      <a :href="item.path" target="_blank">{{item.title}}</a>
-    </el-menu-item>
-    <el-menu-item v-else :index="item.path" :key="item.path">
-      <a :href="'#'+item.path">{{item.title}}</a>
-    </el-menu-item>
-  </template>
-</el-menu>
+  <el-menu :default-active="defaultActive"
+           :class="activeThemeClass"
+           class="head-menu"
+           mode="horizontal">
+    <!-- @select="handleSelect"> -->
+    <!-- 只进行一级展示 -->
+    <template v-for="item in slideMenu">
+      <el-menu-item disabled v-if="item.isBlank" :index="item.path" :key="item.path">
+        <a :href="item.path" target="_blank">{{ item.title }}</a>
+      </el-menu-item>
+      <el-menu-item v-else :index="item.path" :key="item.path">
+        <a :href="'#' + item.path">{{ item.title }}</a>
+      </el-menu-item>
+    </template>
+  </el-menu>
 </template>
 <script lang="ts">
-import {
-  Vue, Component, Watch,
-} from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 @Component
 export default class Aside extends Vue {
@@ -28,31 +26,31 @@ export default class Aside extends Vue {
 
   private activeThemeClass: string = 'el-menu-dark-theme'
 
-  private mounted () {
+  private mounted() {
     this.setDefaultActiveFun(this.$route.fullPath)
   }
 
-  get userMenu () {
+  get userMenu() {
     return this.$store.state.user.menu
   }
 
   @Watch('$route')
-  private changeRoute (val: any) {
+  private changeRoute(val: any) {
     this.setDefaultActiveFun(val.fullPath)
   }
 
   @Watch('userMenu')
-  private changeUserMenu (val: any) {
+  private changeUserMenu(val: any) {
     this.slideMenu = val
   }
 
-  private setDefaultActiveFun (url: string) {
+  private setDefaultActiveFun(url: string) {
     let str = url.substring(1)
     str = str.substring(0, str.indexOf('/'))
     this.defaultActive = `/${str}`
   }
 
-  handleSelect (key: string, keyPath: string) {
+  handleSelect(key: string, keyPath: string) {
     console.log(key, keyPath)
   }
 }
@@ -79,14 +77,15 @@ export default class Aside extends Vue {
       height: 100%;
     }
   }
-  .el-menu-item:hover{
+  .el-menu-item:hover {
     color: #fff;
-    i,span {
+    i,
+    span {
       color: #fff;
     }
     background: #001529;
   }
-  .el-menu-item.is-active{
+  .el-menu-item.is-active {
     color: #fff;
     background: transparent;
     border-bottom: 2px solid $--color-primary;

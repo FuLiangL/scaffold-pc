@@ -22,7 +22,7 @@ export default class Demo extends Vue {
     logo: '',
   }
 
-  getChildClick (msg:string) {
+  getChildClick(msg:string) {
     this.clickTimes += 1
     console.log('getChildClick')
     console.log('parent get message: ', msg) // 获取emit参数

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "src/assets",
+    "html"
+  ]
+}

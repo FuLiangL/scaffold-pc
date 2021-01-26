@@ -112,7 +112,7 @@ export default class Table extends Vue {
 
   addForm: string = ''
 
-  handleFilter (form: object) {
+  handleFilter(form: object) {
   // TODO，获取form作为参数
     console.log({ ...form, addForm: this.addForm })
   }

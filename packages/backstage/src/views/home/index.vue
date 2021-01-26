@@ -39,12 +39,12 @@ export default class Hello extends Vue {
 
   private isBegin = false
 
-  get userInfo (): UserInfo {
+  get userInfo(): UserInfo {
     return store.getters.userInfo || {}
   }
 
   // 输出当前的时间地点
-  private newTime () {
+  private newTime() {
     const weekall = [ '星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六' ]
     const time = new Date()
     const month = time.getMonth() + 1
@@ -55,7 +55,7 @@ export default class Hello extends Vue {
     this.week = weekall[week]
   }
 
-  private beginSetInterval () {
+  private beginSetInterval() {
     const hour: any = document.getElementById('hour')
     const minute: any = document.getElementById('minute')
     const second: any = document.getElementById('second')
@@ -79,7 +79,7 @@ export default class Hello extends Vue {
     }, 100)
   }
 
-  private mounted () {
+  private mounted() {
     this.$nextTick(() => {
       this.newTime()
       this.beginSetInterval()

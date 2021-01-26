@@ -10,7 +10,7 @@ type RequestUrl = string | {
   params?: any
 }
 
-export default async (url: RequestUrl, data: Object | null = {}, method = 'GET', config?: RequestInit) => {
+export default async(url: RequestUrl, data: Object | null = {}, method = 'GET', config?: RequestInit) => {
   let requestUrl = baseUrl + url
   if (typeof url === 'object') {
     requestUrl += qs.stringify(url.params || {}, {

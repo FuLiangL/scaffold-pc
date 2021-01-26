@@ -17,11 +17,11 @@ import Breadcrumb from './bread-crumb.vue'
   components: { Breadcrumb },
 })
 export default class AppMain extends Vue {
-  get isShowBreadcrumb () {
+  get isShowBreadcrumb() {
     return `${this.$route.meta.layout || 'common'}-layout` === 'common-layout'
   }
 
-  get key () {
+  get key() {
     return (this.$router as any).path
   }
 }

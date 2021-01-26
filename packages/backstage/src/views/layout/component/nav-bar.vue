@@ -22,10 +22,10 @@
         <span :class="$style['navbar-news-icon']">
           <i class="iconfont el-icon-bell"></i>
         </span>
-        <el-avatar :class="$style['navbar-user-icon']" :src="userInfo&&userInfo.avatar"></el-avatar>
+        <el-avatar :class="$style['navbar-user-icon']" :src="userInfo && userInfo.avatar"></el-avatar>
         <el-dropdown :class="$style['navbar-dropdown']" @command="handleCommand">
           <span :class="$style['el-dropdown-link']">
-            <span style="padding-top: -10px">{{ userInfo&&userInfo.userName || '暂未登录' }}</span>
+            <span style="padding-top: -10px">{{ (userInfo && userInfo.userName) || '暂未登录' }}</span>
             <i class="el-icon-arrow-down el-icon--right"></i>
           </span>
           <el-dropdown-menu slot="dropdown">
@@ -40,12 +40,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Vue,
-  Emit,
-  Prop,
-  Component,
-} from 'vue-property-decorator'
+import { Vue, Emit, Prop, Component } from 'vue-property-decorator'
 import { UserInfo } from '@/common/interfaces'
 import heard from './heard.vue'
 
@@ -55,14 +50,14 @@ import heard from './heard.vue'
 export default class NavBar extends Vue {
   @Prop({ default: true }) private isCollapse!: boolean
 
-  get userInfo (): UserInfo | undefined {
+  get userInfo(): UserInfo | undefined {
     return this.$store.getters.userInfo || undefined
   }
 
   @Emit('toogle-collapse')
-  toogleCollapse () {}
+  toogleCollapse() {}
 
-  public handleCommand (key: string): void {
+  public handleCommand(key: string) {
     switch (key) {
       case 'user':
         this.$router.push('/user/center')
@@ -76,107 +71,111 @@ export default class NavBar extends Vue {
   }
 
   // 退出登陆
-  private userLoginOut (): void {
-    this.$store.dispatch('user/loginOut').then((res: any) => {
-      if (res.success) {
-        this.$router.push('/login')
-      }
-    }).catch((err: any) => {
-      console.log(err)
-      this.$message.error('退出登陆失败')
-    })
+  private userLoginOut() {
+    console.log(this.$store, 'this.$store')
+    this.$store
+      .dispatch('user/loginOut')
+      .then((res: any) => {
+        if (res.success) {
+          this.$router.push('/login')
+        }
+      })
+      .catch((err: any) => {
+        console.log(err)
+        this.$message.error('退出登陆失败')
+      })
   }
 }
 </script>
 
 <style module lang="scss">
-  .page-navbar {
-    height: 36px;
-    padding: 10px 20px;
-    background: $--color-background;
-    .openLogo {
-      margin-left: -260px;
+.page-navbar {
+  height: 36px;
+  padding: 10px 20px;
+  background: $--color-background;
+  .openLogo {
+    margin-left: -260px;
+    width: 240px;
+    h1 {
       width: 240px;
-      h1 {
-        width: 240px;
-      }
     }
-    .closeLogo {
-      margin-left: -85px;
+  }
+  .closeLogo {
+    margin-left: -85px;
+    width: 65px;
+    h1 {
       width: 65px;
-      h1 {
-        width: 65px;
-      }
     }
-    .page-logo {
-      margin-top: -10px;
+  }
+  .page-logo {
+    margin-top: -10px;
+    height: 56px;
+    float: left;
+    background: #001529;
+    h1 {
       height: 56px;
+      text-align: center;
+      line-height: 56px;
+      font-size: 20px;
+      color: $--color-primary;
+    }
+  }
+  .navbar-left {
+    width: 50%;
+    height: 36px;
+    line-height: 36px;
+    float: left;
+    .navbar-collapse {
+      width: 24px;
+      height: 24px;
       float: left;
-      background: #001529;
-      h1 {
-        height: 56px;
-        text-align: center;
-        line-height: 56px;
-        font-size: 20px;
-        color: $--color-primary;
-      }
-    }
-    .navbar-left {
-      width: 50%;
-      height: 36px;
-      line-height: 36px;
-      float: left;
-      .navbar-collapse {
-        width: 24px;
-        height: 24px;
-        float: left;
-        margin-left: -10px;
-        i {
-          margin-top: 6px;
-        }
-      }
-    }
-    .navbar-right {
-      float: right;
-      height: 36px;
-      line-height: 36px;
-      .navbar-news-icon {
-        padding-top: 4px;
-        height: 24px;
-        margin: 0 20px;
-        float: left;
-        cursor: pointer;
-        .iconfont {
-          font-size: 20px;
-          color: #b2b0c7;
-          transition: all 1s;
-        }
-        &:hover {
-          .iconfont {
-            color: $--color-primary;
-          }
-        }
-      }
-      .navbar-user-icon {
-        width: 36px;
-        height: 36px;
-        float: left;
-      }
-      .navbar-dropdown {
-        height: 36px;
-        line-height: 40px;
-        padding-left: 5px;
-      }
-    }
-    .menu-fold {
-      cursor: pointer;
+      margin-left: -10px;
       i {
-        font-size: 24px;
-        color: #999;
+        margin-top: 6px;
       }
     }
   }
-  .navbar-collapse {
-    margin-right: 20px;
+  .navbar-right {
+    float: right;
+    height: 36px;
+    line-height: 36px;
+    .navbar-news-icon {
+      padding-top: 4px;
+      height: 24px;
+      margin: 0 20px;
+      float: left;
+      cursor: pointer;
+      .iconfont {
+        font-size: 20px;
+        color: #b2b0c7;
+        transition: all 1s;
+      }
+      &:hover {
+        .iconfont {
+          color: $--color-primary;
+        }
+      }
+    }
+    .navbar-user-icon {
+      width: 36px;
+      height: 36px;
+      float: left;
+    }
+    .navbar-dropdown {
+      height: 36px;
+      line-height: 40px;
+      padding-left: 5px;
+    }
   }
+  .menu-fold {
+    cursor: pointer;
+    i {
+      font-size: 24px;
+      color: #999;
+    }
+  }
+}
+.navbar-collapse {
+  margin-right: 20px;
+}
 </style>

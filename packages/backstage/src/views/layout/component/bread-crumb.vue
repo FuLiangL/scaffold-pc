@@ -1,9 +1,11 @@
 <template>
   <el-breadcrumb :class="$style.breadcrumb" separator="/">
-    <el-breadcrumb-item v-for="item in breadcrumbList"
-                        :key="item.path"
-                        :class="item.noClick ? $style.pointer : $style.default">
-      <a v-if="item.noClick" :href="'#'+item.path">{{ item.title }}</a>
+    <el-breadcrumb-item
+      v-for="item in breadcrumbList"
+      :key="item.path"
+      :class="item.noClick ? $style.pointer : $style.default"
+    >
+      <a v-if="item.noClick" :href="'#' + item.path">{{ item.title }}</a>
       <span v-else>{{ item.title }}</span>
     </el-breadcrumb-item>
   </el-breadcrumb>
@@ -13,57 +15,57 @@
 import { Vue, Component, Watch } from 'vue-property-decorator'
 
 interface MenuInterFace {
-  path: string,
-  title: string,
-  isHide?: boolean,
-  icon?: string,
-  zIndex?: number,
-  children?: MenuInterFace[],
+  path: string
+  title: string
+  isHide?: boolean
+  icon?: string
+  zIndex?: number
+  children?: MenuInterFace[]
 }
 interface breadItem {
-  path: string,
-  title: string,
-  query: string,
-  noClick: boolean,
+  path: string
+  title: string
+  query: string
+  noClick: boolean
 }
 @Component
 export default class breadcrumb extends Vue {
-  private breadcrumbList: breadItem[] = [];
+  private breadcrumbList: breadItem[] = []
 
   private slideMenu = this.$store.state.user.menu
 
-  private created () {
+  private created() {
     this.getBreadcrumb()
   }
 
-  get userMenu () {
+  get userMenu() {
     return this.$store.state.user.menu
   }
 
   @Watch('$route')
-  private getRoute () {
+  private getRoute() {
     this.getBreadcrumb()
   }
 
   @Watch('userMenu')
-  private changeUserMenu (val: any) {
+  private changeUserMenu(val: any) {
     this.slideMenu = val
   }
 
   // 根据对应的路由去得到面包屑的路径
-  private getBreadcrumb () {
+  private getBreadcrumb() {
     const url = this.$route.fullPath
-    const breadArr:breadItem[] = []
+    const breadArr: breadItem[] = []
     this.returnBreadcrumb(url, breadArr, this.slideMenu)
   }
 
   // 递归得到
-  private returnBreadcrumb (
+  private returnBreadcrumb(
     url: string,
     breadArr: breadItem[],
     menuArr: MenuInterFace[],
   ) {
-    menuArr.forEach((item) => {
+    menuArr.forEach(item => {
       if (url.indexOf(item.path) >= 0) {
         breadArr.push({
           path: item.path,
@@ -83,12 +85,12 @@ export default class breadcrumb extends Vue {
   }
 
   // 进行判断当前可以点击的
-  private isClickFun (childrenArr: MenuInterFace[]) {
+  private isClickFun(childrenArr: MenuInterFace[]) {
     if (childrenArr.length === 0) {
       return false
     }
     let isClick = true
-    childrenArr.forEach((item) => {
+    childrenArr.forEach(item => {
       if (!item.isHide) isClick = false
     })
     return isClick

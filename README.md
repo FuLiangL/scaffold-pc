@@ -37,3 +37,10 @@ yarn run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### run
+```
+lerna run --scope backstage serve
+lerna run --scope backstage lint
+lerna run --scope backstage build
+```

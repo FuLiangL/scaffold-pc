@@ -21,7 +21,7 @@ interface rouerObj {
   component: any,
   children?: this[],
 }
-function getPageRoute (arr: Array<rouerObj>) {
+function getPageRoute(arr: Array<rouerObj>) {
   arr.forEach((item) => {
     const copyItem = { ...item }
     if (copyItem.children && copyItem.children.length > 0) {
@@ -59,7 +59,7 @@ const router = new VueRouter({
   routes: BaseRoutes,
 })
 
-function isJoinFun (url: string, arr: MenuInterFace[]) {
+function isJoinFun(url: string, arr: MenuInterFace[]) {
   let isJoin = false
   const loopFun = (loopArr: MenuInterFace[]) => {
     loopArr.forEach((item) => {
@@ -75,7 +75,7 @@ function isJoinFun (url: string, arr: MenuInterFace[]) {
   return isJoin
 }
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async(to, from, next) => {
   if (to.path === '/login') {
     next()
   } else if (store.state.user.token) {

@@ -15,7 +15,7 @@ import searchContents from './config'
 export default class Test3 extends Vue {
   public searchContents = searchContents
 
-  private mounted () {
+  private mounted() {
     // 一上来应该有一个默认数据进行展示的
     console.log('mounted')
   }

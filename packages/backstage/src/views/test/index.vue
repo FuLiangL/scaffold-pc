@@ -22,7 +22,7 @@ export default class Test extends Vue {
 
   public secRingArr: Array<any> = []
 
-  private mounted () {
+  private mounted() {
     // 一上来应该有一个默认数据进行展示的
     this.secRingArr = [
       { lng: 114.052, lat: 22.550 },
@@ -32,11 +32,11 @@ export default class Test extends Vue {
     ]
   }
 
-  private jumpFun () {
+  private jumpFun() {
     this.$router.push({ path: '/eCommerceBackstage/test1/test2' })
   }
 
-  public editSure (type: string) {
+  public editSure(type: string) {
     if (type === '0') {
       // 提交的时候的操作
       // this.$refs.mapGetPath.getPath()

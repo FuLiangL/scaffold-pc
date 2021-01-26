@@ -72,21 +72,21 @@ export default class ResourceSelect extends Vue {
 
   private extraVisible: boolean = false
 
-  created () {
+  created() {
     // TODO: 获取需要展示的标签
   }
 
-  handleTabClick (tab: string) {
+  handleTabClick(tab: string) {
     this.currentTab = tab
   }
 
-  private handleExtraCancel () {
+  private handleExtraCancel() {
     this.extraVisible = false
   }
 
   /** 填写额外信息提交 */
   @Emit('ok')
-  private handleExtraConfirm () {
+  private handleExtraConfirm() {
     this.$emit('change', false)
     this.extraVisible = false
     return this.value
@@ -94,12 +94,12 @@ export default class ResourceSelect extends Vue {
 
   /** 关闭资源选择器 */
   @Emit('cancel')
-  private handleCancel () {
+  private handleCancel() {
     this.value = undefined
   }
 
   /** 选择资源确认 */
-  private handleConfirm () {
+  private handleConfirm() {
     this.extraVisible = true
     // FIXME: 填充具体值
     this.value = { value: 'placeholder' }

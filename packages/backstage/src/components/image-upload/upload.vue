@@ -75,7 +75,7 @@ export default class ImageUpload extends Vue {
 
   @Prop() minCropBoxHeight!: number
 
-  handleChange (file: UploadFile) {
+  handleChange(file: UploadFile) {
     if (
       file?.url
       && this.accepts.some((v) => file.name.endsWith(v))
@@ -89,12 +89,12 @@ export default class ImageUpload extends Vue {
   }
 
   @Emit('cancel')
-  handleCancel () {
+  handleCancel() {
     this.cropperVisible = false
   }
 
   @Emit('confirm')
-  handleConfirm () {
+  handleConfirm() {
     this.cropperVisible = false
     const croppedCanvas = (this.$refs.cropper as unknown as VueCropperMethods)?.getCroppedCanvas()
     const dataURL = croppedCanvas.toDataURL('image/png')

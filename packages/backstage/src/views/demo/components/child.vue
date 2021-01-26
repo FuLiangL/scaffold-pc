@@ -25,12 +25,12 @@ export default class Child extends Vue {
   times:number = 0
 
   @Emit('on-child-click')
-  handleclick () {
+  handleclick() {
     return this.user.name
   }
 
   @Watch('clickTimes')
-  showClickTime (val: number) {
+  showClickTime(val: number) {
     this.times = val
   }
 }

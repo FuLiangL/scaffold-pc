@@ -28,7 +28,7 @@ export default class FilterSearch extends Vue {
 
   @Prop(Array) searchContents!:[]
 
-  mounted () {
+  mounted() {
     console.log(this.searchContents, 123456)
   }
 }

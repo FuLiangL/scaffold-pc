@@ -7,9 +7,7 @@
 </template>
 
 <script lang="ts">
-import {
-  Vue, Component, Provide,
-} from 'vue-property-decorator'
+import { Vue, Component, Provide } from 'vue-property-decorator'
 
 @Component({})
 export default class App extends Vue {
@@ -17,11 +15,11 @@ export default class App extends Vue {
 
   @Provide() reload = this.reloadFun
 
-  get layout () {
+  get layout() {
     return `${this.$route.meta.layout || 'common'}-layout`
   }
 
-  reloadFun (): void {
+  reloadFun() {
     this.isRouterAlive = false
     this.$nextTick(() => {
       this.isRouterAlive = true
@@ -30,5 +28,4 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang="scss">
-</style>
+<style lang="scss"></style>

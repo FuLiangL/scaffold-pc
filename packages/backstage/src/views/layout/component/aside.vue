@@ -89,26 +89,26 @@ export default class Aside extends Vue {
 
   private activeThemeClass: string = 'el-menu-dark-theme'
 
-  mounted () {
+  mounted() {
     this.getHideTrue(this.slideMenu)
     this.indexName(this.$route.fullPath)
   }
 
-  get userMenu () {
+  get userMenu() {
     return this.$store.state.user.menu
   }
 
   @Watch('$route')
-  private changeRoute (val: any) {
+  private changeRoute(val: any) {
     this.indexName(val.fullPath)
   }
 
   @Watch('userMenu')
-  private changeUserMenu (val: any) {
+  private changeUserMenu(val: any) {
     this.slideMenu = val
   }
 
-  private indexName (index: string) {
+  private indexName(index: string) {
     if (this.onIndexArr.indexOf(index) >= 0) {
       // 如果是缺失本身就没有的index，直接去进行找到上一级的
       this.indexName(index.substring(0, index.lastIndexOf('/')))
@@ -128,7 +128,7 @@ export default class Aside extends Vue {
   }
 
   // 得到全部的true的路由，进行对应的判断区分
-  private getHideTrue (arr: MenuInterFace[]) {
+  private getHideTrue(arr: MenuInterFace[]) {
     arr.forEach((item) => {
       if (item.children && item.children.length > 0) this.getHideTrue(item.children)
       if (item.isHide === true) this.onIndexArr.push(item.path)
@@ -137,7 +137,7 @@ export default class Aside extends Vue {
 
   // 进行判断对应的是否全是isHide，就没有对应的展示内容
   // 对应列表里面去有对应的详情和编辑新建页面等
-  private isHaveChildren (arr: MenuInterFace[]) {
+  private isHaveChildren(arr: MenuInterFace[]) {
     let isHave = false
     arr.forEach((item: MenuInterFace) => {
       if (item.isHide === false) isHave = true
