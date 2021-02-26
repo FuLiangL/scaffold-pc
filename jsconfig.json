@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./packages",
     "paths": {
+      "@/common/*": ["packages/backstage/src/common/*"],
     }
   },
   "exclude": [

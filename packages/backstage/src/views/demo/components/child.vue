@@ -39,7 +39,7 @@ export default class Child extends Vue {
 .demo {
   line-height: 1.5;
   .line {
-    // color: $--color-primary;
+    color: $--color-primary;
   }
 }
 </style>
